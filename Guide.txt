@@ -1,0 +1,29 @@
+Guide to fix multichoice list issues HUBOL
+0. The issue at hand
+
+1. Open your HUBOL ROM in HMA & find free space (592 bytes)
+
+2. Paste these bytes into the free space; 
+<3DFD50> 02 00 00 00 <3E0190> 05 00 00 00 <3DFD60> 04 00 00 00 <3DFD80> 02 00 00 00 <3DFD90> 02 00 00 00 <3DFDA0> 02 00 00 00 <3DFDB0> 03 00 00 00 <3DFDC8> 03 00 00 00 <3DFDE0> 03 00 00 00 <3DFDF8> 04 00 00 00 <3E04A8> 01 00 00 00 <3E04A8> 01 00 00 00 <3E04A8> 01 00 00 00 <3E01B8> 02 00 00 00 <3E01C8> 06 00 00 00 <3DFE18> 06 00 00 00 <3DFE48> 03 00 00 00 <3DFE60> 05 00 00 00 <3DFE88> 03 00 00 00 <3DFEA0> 03 00 00 00 <3DFEB8> 03 00 00 00 <3DFED0> 02 00 00 00 <3DFEE0> 02 00 00 00 <3DFEF0> 02 00 00 00 <3DFF00> 03 00 00 00 <3DFF18> 03 00 00 00 <3DFF30> 04 00 00 00 <3DFFB0> 03 00 00 00 <3DFFC8> 02 00 00 00 <3DFFD8> 02 00 00 00 <3DFF50> 06 00 00 00 <3DFFE8> 06 00 00 00 88 E0 03 02 02 00 00 00 88 E0 03 02 03 00 00 00 88 E0 03 02 04 00 00 00 88 E0 03 02 05 00 00 00 88 E0 03 02 06 00 00 00 88 E0 03 02 07 00 00 00 <3E0090> 04 00 00 00 <3E01F8> 03 00 00 00 <3E0210> 03 00 00 00 <3DFF80> 06 00 00 00 <3E0228> 04 00 00 00 <3E0248> 04 00 00 00 <3E0268> 03 00 00 00 <3E0280> 03 00 00 00 <3E0298> 03 00 00 00 <3E02B0> 04 00 00 00 <3E02D0> 03 00 00 00 <3E0300> 03 00 00 00 <3E02E8> 03 00 00 00 <3E0318> 02 00 00 00 <3E0328> 05 00 00 00 <3E0350> 04 00 00 00 <3E0370> 03 00 00 00 <3E0388> 03 00 00 00 <3E03A0> 04 00 00 00 <3E03C0> 04 00 00 00 <3E03E0> 04 00 00 00 <3E0400> 04 00 00 00 <3E0420> 04 00 00 00 <3E0440> 02 00 00 00 <3E0450> 03 00 00 00 <3E0468> 03 00 00 00 <3E0480> 05 00 00 00
+
+3. Take note of your offset , for the sake of the guide i'll be doing it as i'm making the guide. 
+My offset where i've pasted the bytes is = 35DE40
+
+4. Navigate to the original multichoice list 
+
+5. Once at the original multichoice list, right click the top pointer (multilist 0)
+It should show "scripts.text.multichoice" at the top, with an arrow pointing to the right. 
+Hover over that choice and click the first of the two pointers in the list that is displayed.
+
+6. Once you've done that, you'll see "<scripts.text.multichoice>" within the data table
+   Right click this pointer and click "clear format"  
+   
+7. What you're looking for is the first three bytes , before 08 (just like inserting with scripts and such)
+You'll want to remove the first three bytes. 
+
+8. Finally you'll want to correctly insert the offset we saved earlier into these three bytes
+to do this we take the offset = 35DE40 and 'convert' it to little endian.. 
+35DE40 --> 35 DE 40 --> 40 DE 35 --> 40DE35
+This is the offset you'll want to insert here. Follow image but with your offset.
+
+9. Finished 
