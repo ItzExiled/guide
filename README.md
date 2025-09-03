@@ -50,7 +50,7 @@ Right-click the top pointer (`multilist 0`).
 It should show `scripts.text.multichoice` with an arrow →.  
 Hover over it and click the **first pointer** in the displayed list.
 
-![Follow Pointer](5_followPtronwhetever.png)
+![Follow Pointer](5_followPtrorwhtever.png)
 
 ---
 
